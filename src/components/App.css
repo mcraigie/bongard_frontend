@@ -14,22 +14,29 @@ body {
 .header-band {
   display: grid;
   grid-template-columns: repeat(3, 33.333%);
+  margin-top: 1.5vw;
 
-  text-align: center;
-  padding-top: 1.5vw;
-  text-align: center;
+  border: .112vw solid var(--color-three);
 }
 
 .header-band > h1 {
   font-size: 3vw;
-  margin: auto 0;
+  margin: 0;
   color: var(--color-one);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-band > .sub-text {
   font-size: 1.4vw;
-  margin: auto 0;
+  margin: 0;
   color: var(--color-two);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-band {
@@ -39,20 +46,23 @@ body {
 
 .status-band {
   text-align: center;
-  min-height: 5.5vw;
-}
+  min-height: 4.5vw;
+  border: .112vw solid var(--color-three);
 
-.status-band * {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .instructions > p {
   font-size: 1.1vw;
   color: var(--color-three);
+  margin: 0;
 }
 
 .previous-result > p {
   font-size: 1.6vw;
+  margin: 0;
 }
 
 .correct {
@@ -64,6 +74,7 @@ body {
 }
 
 .problem {
+  border: .112vw solid var(--color-three);
   display: grid;
   grid-template-columns: repeat(3, 33.333%);
 }
