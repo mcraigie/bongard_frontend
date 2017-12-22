@@ -127,21 +127,22 @@ body {
 }
 
 /* Colours Section */
-
-body {
-  background-color: #FFFFFF;
-}
+/* (just for while I'm still working out a colour scheme) */
 
 .header-band > h1 {
   color: #DB7093;
+}
+
+.header-band > .sub-text {
+  color: #7093db;
 }
 
 .instructions {
   color: #848C8E;
 }
 
-.header-band > .sub-text {
-  color: #7093db;
+.footer-band {
+  color: #848C8E;
 }
 
 .correct {
@@ -149,43 +150,30 @@ body {
 }
 
 .incorrect {
-  /*color: #eb98a9;*/
   color: #e084a2;
 }
 
-.footer-band {
-  color: #848C8E;
-}
-
 .named-column {
-  /*background-color: #848C8E;*/
   background-color: #727272;
 }
 
 .name > h2 {
   color: white;
-  /*color: #262626;*/
 }
 
 .variety-blank {
   background-color: #FFFFFF;
-  /*FAFFFA*/
 }
 
 .variety-one {
-  /*background-color: #98ebb1;*/
   background-color: #AFD7E1;
-  /*E084A2*/
+  background-color: #bbe5ed;
 }
 
 .variety-two {
   background-color: #E1978A;
-  /*background-color: rgba(218, 216, 192, 1);*/
-}
-
-.variety-three {
-  /*background-color: #eb98d2;*/
-  background-color: #AFE1B3;
+  background-color: #d4e6b5;
+  background-color: #d3ab9e;
 }
 
 .twitter-button {
@@ -194,8 +182,4 @@ body {
 
 .survey-button {
   background-color: #eb98d2;
-}
-
-.reset-button {
-  background-color: #DB7093;
 }
