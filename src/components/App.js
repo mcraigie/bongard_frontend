@@ -11,6 +11,7 @@ import * as actionCreators from '../actions/actionCreators';
 
 import Home from './Home';
 import Game from './Game';
+import NoMatch from './NoMatch';
 
 import './App.css';
 
@@ -82,6 +83,8 @@ class App extends Component {
               />
             )}
           />
+
+          <Route component={NoMatch}/>
         </Switch>
       </div>
     );

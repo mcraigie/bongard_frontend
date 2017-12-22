@@ -53,7 +53,7 @@ class GameBand extends Component {
       displayInstructions,
     } = this.props;
 
-    let body = <p>Something went wrong while trying to load the page :(</p>;
+    let body = <p className="incorrect" >Something went wrong while trying to contact the server :(</p>;
 
     if (loading) {
       body = <BlankProblem />;
