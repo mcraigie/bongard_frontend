@@ -11,12 +11,16 @@ body {
   font-family: 'Merriweather', 'Arial', serif;
 }
 
+.game-band {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
 .header-band {
   display: grid;
   grid-template-columns: repeat(3, 33.333%);
   margin-top: 1.5vw;
 
-  border: .112vw solid var(--color-three);
 }
 
 .header-band > h1 {
@@ -39,15 +43,9 @@ body {
   align-items: center;
 }
 
-.game-band {
-  padding-left: 15vw;
-  padding-right: 15vw;
-}
-
 .status-band {
   text-align: center;
-  min-height: 4.5vw;
-  border: .112vw solid var(--color-three);
+  min-height: 5vw;
 
   display: flex;
   justify-content: center;
@@ -74,7 +72,6 @@ body {
 }
 
 .problem {
-  border: .112vw solid var(--color-three);
   display: grid;
   grid-template-columns: repeat(3, 33.333%);
 }
