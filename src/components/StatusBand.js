@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Instructions from './Instructions';
 import PreviousResult from './PreviousResult';
 
-const StatusBand = ({ previousAnswerCorrect }) => {
+const StatusBand = ({ previousAnswerCorrect, displayInstructions }) => {
   let content = null;
 
-  if (previousAnswerCorrect == null) {
+  if (displayInstructions) {
     content = <Instructions />;
-  } else {
+  } else if (previousAnswerCorrect != null) {
     content = <PreviousResult previousAnswerCorrect={previousAnswerCorrect} />;
   }
 
@@ -22,6 +22,7 @@ const StatusBand = ({ previousAnswerCorrect }) => {
 
 StatusBand.propTypes = {
   previousAnswerCorrect: PropTypes.bool,
+  displayInstructions: PropTypes.bool.isRequired,
 };
 
 StatusBand.defaultProps = {

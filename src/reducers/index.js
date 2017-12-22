@@ -7,6 +7,7 @@ import responses from './responses';
 import streaks from './streaks';
 import nextProblemId from './nextProblemId';
 import previousAnswerCorrect from './previousAnswerCorrect';
+import displayInstructions from './displayInstructions';
 
 export {
   score,
@@ -17,5 +18,6 @@ export {
   responses,
   streaks,
   nextProblemId,
-  previousAnswerCorrect
+  previousAnswerCorrect,
+  displayInstructions
 };

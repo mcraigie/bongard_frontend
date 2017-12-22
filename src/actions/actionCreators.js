@@ -31,3 +31,9 @@ export function respond(problem, answer) {
     answer,
   };
 }
+
+export function toggleInstructions() {
+  return {
+    type: 'TOGGLE_INSTRUCTIONS',
+  };
+}

@@ -31,6 +31,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /*text-shadow: 2px 2px #85b5e5;*/
+
+/*  text-decoration: underline;
+  text-decoration-skip: ink;*/
 }
 
 .header-band > .sub-text {
@@ -144,8 +149,10 @@ body {
 .button {
   color: var(--color-four);
   border: none;
-  border-radius: 3vw;
-  padding: .6%;
+  border-radius: 1em;
+  padding: .5vw;
+  padding-top: .3vw;
+  padding-bottom: .3vw;
   display: inline-block;
   text-align: center;
   text-decoration: none;
@@ -164,4 +171,8 @@ body {
 
 .survey-button {
   background-color: var(--color-one);
+}
+
+.twitter-button {
+  background-color: var(--color-two);
 }

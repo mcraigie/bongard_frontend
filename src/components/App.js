@@ -32,6 +32,7 @@ class App extends Component {
       error,
       streaks,
       nextProblemId,
+      displayInstructions,
     } = this.props;
 
     const {
@@ -39,6 +40,7 @@ class App extends Component {
       setError,
       respond,
       push,
+      toggleInstructions,
     } = this.props.actions;
 
     // could make this null if current problem not available
@@ -75,6 +77,8 @@ class App extends Component {
                 setError={setError}
                 handleAnswer={respondAndPush}
                 streaks={streaks}
+                toggleInstructions={toggleInstructions}
+                displayInstructions={displayInstructions}
               />
             )}
           />
@@ -112,7 +116,9 @@ App.propTypes = {
     setAsTouchDevice: PropTypes.func,
     setCurrentProblem: PropTypes.func,
     setError: PropTypes.func,
+    toggleInstructions: PropTypes.func,
   }).isRequired,
+  displayInstructions: PropTypes.bool.isRequired,
 };
 
 App.defaultProps = {

@@ -49,6 +49,8 @@ class GameBand extends Component {
       previousAnswerCorrect,
       handleAnswer,
       streaks,
+      toggleInstructions,
+      displayInstructions,
     } = this.props;
 
     let body = <p>Something went wrong while trying to load the page :(</p>;
@@ -70,9 +72,15 @@ class GameBand extends Component {
         <HeaderBand
           bestStreak={streaks.best}
           currentStreak={streaks.current}
+          isTouchDevice={isTouchDevice}
+          toggleInstructions={toggleInstructions}
+          displayInstructions={displayInstructions}
         />
 
-        <StatusBand previousAnswerCorrect={previousAnswerCorrect} />
+        <StatusBand
+          previousAnswerCorrect={previousAnswerCorrect}
+          displayInstructions={displayInstructions}
+        />
 
         {body}
 
@@ -110,6 +118,8 @@ GameBand.propTypes = {
       problemId: PropTypes.string,
     }),
   }).isRequired,
+  toggleInstructions: PropTypes.func.isRequired,
+  displayInstructions: PropTypes.bool.isRequired,
 };
 
 GameBand.defaultProps = {
