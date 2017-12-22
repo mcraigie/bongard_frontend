@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:700');
 
+:root {
+  --color-one: #e5799b;
+  --color-two: #85b5e5;
+  --color-three: #7f8084;
+  --color-four: white;
+}
+
 body {
   font-family: 'Merriweather', 'Arial', serif;
 }
@@ -9,29 +16,20 @@ body {
   grid-template-columns: repeat(3, 33.333%);
 
   text-align: center;
-  padding-top: 2vw;
+  padding-top: 1.5vw;
+  text-align: center;
 }
 
 .header-band > h1 {
-  text-align: center;
   font-size: 3vw;
   margin: auto 0;
+  color: var(--color-one);
 }
 
 .header-band > .sub-text {
-  text-align: center;
   font-size: 1.4vw;
   margin: auto 0;
-}
-
-.footer-band {
-  text-align: center;
-  padding-top: 1vw;
-}
-
-.footer-band > p {
-  font-size: 1vw;
-  margin-bottom: 0;
+  color: var(--color-two);
 }
 
 .game-band {
@@ -39,26 +37,30 @@ body {
   padding-right: 15vw;
 }
 
-.game-band > p {
-  text-align: center;
-}
-
 .status-band {
   text-align: center;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
-  min-height: 6vw;
+  min-height: 5.5vw;
+}
+
+.status-band * {
+  margin: auto;
 }
 
 .instructions > p {
-  margin: .3vw;
-  font-size: 1.2vw;
+  font-size: 1.1vw;
+  color: var(--color-three);
 }
 
 .previous-result > p {
-  margin: .3vw;
   font-size: 1.6vw;
-  /*padding-top: 1.2vw;*/
+}
+
+.correct {
+  color: var(--color-two);
+}
+
+.incorrect {
+  color: var(--color-one);
 }
 
 .problem {
@@ -71,15 +73,14 @@ body {
   padding-top: 3.5%;
   padding-bottom: 3.5%;
   margin: 0 10%;
-}
-
-.name {
+  background-color: var(--color-three);
   text-align: center;
 }
 
 .name h2 {
   font-size: 1.7vw;
   margin: 0;
+  color: var(--color-four);
 }
 
 .diagram-set {
@@ -104,13 +105,36 @@ body {
 }
 
 .cell {
-  border: .112vw solid #727272;
+  border: .112vw solid var(--color-three);
   width: 2vw;
   height: 2vw;
 }
 
+.variety-blank {
+  background-color: var(--color-four);
+}
+
+.variety-one {
+  background-color: var(--color-two);
+}
+
+.variety-two {
+  background-color: var(--color-one);
+}
+
+.footer-band {
+  text-align: center;
+  padding-top: 1vw;
+}
+
+.footer-band > p {
+  font-size: 1vw;
+  margin-bottom: 0;
+  color: var(--color-three);
+}
+
 .button {
-  color: white;
+  color: var(--color-four);
   border: none;
   border-radius: 3vw;
   padding: .6%;
@@ -126,60 +150,10 @@ body {
   cursor: pointer;
 }
 
-/* Colours Section */
-/* (just for while I'm still working out a colour scheme) */
-
-.header-band > h1 {
-  color: #DB7093;
-}
-
-.header-band > .sub-text {
-  color: #7093db;
-}
-
-.instructions {
-  color: #848C8E;
-}
-
-.footer-band {
-  color: #848C8E;
-}
-
-.correct {
-  color: #7093db;
-}
-
-.incorrect {
-  color: #e084a2;
-}
-
-.named-column {
-  background-color: #727272;
-}
-
-.name > h2 {
-  color: white;
-}
-
-.variety-blank {
-  background-color: #FFFFFF;
-}
-
-.variety-one {
-  background-color: #AFD7E1;
-  background-color: #bbe5ed;
-}
-
-.variety-two {
-  background-color: #E1978A;
-  background-color: #d4e6b5;
-  background-color: #d3ab9e;
-}
-
 .twitter-button {
-  background-color: #98D2EB;
+  background-color: var(--color-two);
 }
 
 .survey-button {
-  background-color: #eb98d2;
+  background-color: var(--color-one);
 }

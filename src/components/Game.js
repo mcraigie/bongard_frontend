@@ -84,13 +84,38 @@ class GameBand extends Component {
 
 GameBand.propTypes = {
   isTouchDevice: PropTypes.bool.isRequired,
-  currentProblem: PropTypes.object,
+  currentProblem: PropTypes.shape({
+    id: PropTypes.string,
+    followers: PropTypes.array,
+    rogues: PropTypes.array,
+    answers: PropTypes.array,
+    correctAnswerId: PropTypes.string,
+    nextProblemId: PropTypes.string,
+  }),
   previousAnswerCorrect: PropTypes.bool,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.shape({
+    stack: PropTypes.string,
+    message: PropTypes.string,
+  }),
   setCurrentProblem: PropTypes.func.isRequired,
   setError: PropTypes.func.isRequired,
   handleAnswer: PropTypes.func.isRequired,
+  streaks: PropTypes.shape({
+    best: PropTypes.number,
+    current: PropTypes.number,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      problemId: PropTypes.string,
+    }),
+  }).isRequired,
+};
+
+GameBand.defaultProps = {
+  currentProblem: null,
+  previousAnswerCorrect: null,
+  error: null,
 };
 
 export default GameBand;
