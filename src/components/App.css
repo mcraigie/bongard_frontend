@@ -20,11 +20,11 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 33.333%);
   margin-top: 1.5vw;
-
 }
 
 .header-band > h1 {
   font-size: 3vw;
+
   margin: 0;
   color: var(--color-one);
 
@@ -161,7 +161,7 @@ body {
 }
 
 .hoverable:hover {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: pointer;
 }
 
