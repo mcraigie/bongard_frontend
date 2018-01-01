@@ -10,7 +10,7 @@ coverage
 build
 
 scrap
-json_server
+json
 
 # misc
 .DS_Store
