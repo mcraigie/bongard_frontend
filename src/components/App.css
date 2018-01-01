@@ -3,7 +3,8 @@
 :root {
   --color-one: #e5799b;
   --color-two: #85b5e5;
-  --color-three: #7f8084;
+  /*--color-three: #7f8084;*/
+  --color-three: #666666;
   --color-four: white;
 }
 
@@ -25,18 +26,11 @@ body {
 
 .header-band > h1 {
   font-size: 3vw;
-
   margin: 0;
   color: var(--color-one);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /*text-shadow: 2px 2px #85b5e5;*/
-
-/*  text-decoration: underline;
-  text-decoration-skip: ink;*/
 }
 
 .header-band > .sub-text {
@@ -51,7 +45,7 @@ body {
 
 .status-band {
   text-align: center;
-  min-height: 5vw;
+  min-height: 4.5vw;
 
   display: flex;
   justify-content: center;
@@ -108,14 +102,13 @@ body {
 }
 
 .diagram {
-  width: 6vw;
-  height: 6vw;
-
   display: grid;
   grid-template-columns: repeat(3, 33.333%);
   grid-template-columns: repeat(3, 33.333%);
 
   margin: .6vw auto;
+  /*border: .5vw solid var(--color-two);*/
+  /*background: rgba(255,138,140,1);*/
 }
 
 .cell {
@@ -124,16 +117,16 @@ body {
   height: 2vw;
 }
 
-.variety-blank {
+.variety-1 {
   background-color: var(--color-four);
 }
 
-.variety-one {
-  background-color: var(--color-two);
+.variety-2 {
+  background-color: var(--color-one);
 }
 
-.variety-two {
-  background-color: var(--color-one);
+.variety-3 {
+  background-color: var(--color-two);
 }
 
 .footer-band {

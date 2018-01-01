@@ -33,7 +33,7 @@ NamedColumn.propTypes = {
   name: PropTypes.string.isRequired,
   diagrams: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
-    specification: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    specification: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   })).isRequired,
   isAnswerColumn: PropTypes.bool.isRequired,
   handleAnswer: PropTypes.func,

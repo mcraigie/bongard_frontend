@@ -15,11 +15,7 @@ class GameBand extends Component {
   }
 
   componentDidMount() {
-    const { loading } = this.props;
-
-    if (loading) {
-      this.requestProblem(this.props.match.params.problemId);
-    }
+    this.requestProblem(this.props.match.params.problemId);
   }
 
   componentDidUpdate() {

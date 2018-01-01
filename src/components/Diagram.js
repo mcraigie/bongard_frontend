@@ -21,7 +21,7 @@ const Diagram = ({
 
 Diagram.propTypes = {
   id: PropTypes.string.isRequired,
-  specification: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  specification: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   isAnswerColumn: PropTypes.bool.isRequired,
   handleAnswer: PropTypes.func,
   isTouchDevice: PropTypes.bool,

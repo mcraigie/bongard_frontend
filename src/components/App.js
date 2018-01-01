@@ -34,6 +34,7 @@ class App extends Component {
       streaks,
       nextProblemId,
       displayInstructions,
+      responses
     } = this.props;
 
     const {
@@ -46,7 +47,10 @@ class App extends Component {
 
     // could make this null if current problem not available
     function respondAndPush(answer) {
-      respond(currentProblem, answer);
+      if (responses.filter(r => r.problemId === currentProblem.id).length === 0) {
+        respond(currentProblem, answer);
+      }
+
       push(`/problem/${nextProblemId}`);
     }
 
