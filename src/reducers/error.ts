@@ -1,4 +1,6 @@
-function error(state = null, action) {
+import { Action } from "redux";
+
+function error(state = null, action: Action) {
   switch (action.type) {
     case "SET_ERROR":
       return { ...action.error };

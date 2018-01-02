@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 
-import ConnectedApp from "./components/App";
+import ConnectedApp from "./components/ConnectedApp";
 import * as reducers from "./reducers/index";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -18,16 +18,20 @@ const history = createHistory();
 
 const middleware = routerMiddleware(history);
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  : f => f;
+// interface Window {
+//   __REDUX_DEVTOOLS_EXTENSION__: any;
+// }
+
+// const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
+//   ? window.__REDUX_DEVTOOLS_EXTENSION__()
+//   : f => f;
 
 const store = createStore(
   combineReducers({
     ...reducers,
     router: routerReducer,
   }),
-  compose(applyMiddleware(middleware), devTools)
+  compose(applyMiddleware(middleware)) // middleware), devTools
 );
 
 ReactDOM.render(

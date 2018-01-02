@@ -1,4 +1,6 @@
-function previousAnswerCorrect(state = null, action) {
+import { Action } from "redux";
+
+function previousAnswerCorrect(state = null, action: Action) {
   switch (action.type) {
     case "RESPOND":
       return action.problem.correctAnswerId === action.answer;

@@ -1,4 +1,6 @@
-function displayInstructions(state = true, action) {
+import { Action } from "redux";
+
+function displayInstructions(state = true, action: Action) {
   switch (action.type) {
     case "TOGGLE_INSTRUCTIONS":
       return !state;

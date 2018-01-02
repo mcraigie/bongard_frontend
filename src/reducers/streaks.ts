@@ -1,4 +1,6 @@
-function streaks(state = { best: 0, current: 0 }, action) {
+import { Action } from "redux";
+
+function streaks(state = { best: 0, current: 0 }, action: Action) {
   switch (action.type) {
     case "RESPOND": {
       let { best, current } = state;

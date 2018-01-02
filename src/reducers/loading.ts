@@ -1,4 +1,6 @@
-function loading(state = true, action) {
+import { Action } from "redux";
+
+function loading(state = true, action: Action) {
   switch (action.type) {
     case "SET_CURRENT_PROBLEM":
       return false;

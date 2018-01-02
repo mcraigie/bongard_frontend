@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 
-const Instructions = () => (
+export const Instructions = () => (
   <div className="instructions">
     <p>All of the Followers (and none of the Rogues) obey a secret rule.</p>
     <p>
@@ -9,5 +9,3 @@ const Instructions = () => (
     </p>
   </div>
 );
-
-export default Instructions;

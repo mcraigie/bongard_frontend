@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 
-const BlankProblem = () => (
+export const BlankProblem = () => (
   <div className="problem">
     <div className="named-column">
       <div className="name">
@@ -40,5 +40,3 @@ const BlankProblem = () => (
     </div>
   </div>
 );
-
-export default BlankProblem;

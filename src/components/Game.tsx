@@ -1,14 +1,27 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-import HeaderBand from "./HeaderBand";
-import FooterBand from "./FooterBand";
+import { HeaderBand } from "./HeaderBand";
+import { FooterBand } from "./FooterBand";
 
-import StatusBand from "./StatusBand";
-import Problem from "./Problem";
-import BlankProblem from "./BlankProblem";
+import { StatusBand } from "./StatusBand";
+import { Problem } from "./Problem";
+import { BlankProblem } from "./BlankProblem";
 
-class GameBand extends Component {
+export interface GameProps {
+  loading: boolean;
+  currentProblem: Problem;
+  previousAnswerCorrect?: boolean;
+  handleAnswer: any;
+  streaks: Streaks;
+  toggleInstructions: any;
+  displayInstructions: boolean;
+  match: any;
+  setCurrentProblem: any;
+  setError: any;
+  error: Error;
+}
+
+export class Game extends React.Component<GameProps, {}> {
   componentDidMount() {
     this.requestProblem(this.props.match.params.problemId);
   }
@@ -21,7 +34,7 @@ class GameBand extends Component {
     }
   }
 
-  requestProblem = problemId => {
+  requestProblem = (problemId: string) => {
     const { setCurrentProblem, setError } = this.props;
 
     fetch(`http://127.0.0.1:8080/${problemId}.json`)
@@ -71,42 +84,3 @@ class GameBand extends Component {
     );
   }
 }
-
-GameBand.propTypes = {
-  currentProblem: PropTypes.shape({
-    id: PropTypes.string,
-    followers: PropTypes.array,
-    rogues: PropTypes.array,
-    answers: PropTypes.array,
-    correctAnswerId: PropTypes.string,
-    nextProblemId: PropTypes.string,
-  }),
-  previousAnswerCorrect: PropTypes.bool,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.shape({
-    stack: PropTypes.string,
-    message: PropTypes.string,
-  }),
-  setCurrentProblem: PropTypes.func.isRequired,
-  setError: PropTypes.func.isRequired,
-  handleAnswer: PropTypes.func.isRequired,
-  streaks: PropTypes.shape({
-    best: PropTypes.number,
-    current: PropTypes.number,
-  }).isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      problemId: PropTypes.string,
-    }),
-  }).isRequired,
-  toggleInstructions: PropTypes.func.isRequired,
-  displayInstructions: PropTypes.bool.isRequired,
-};
-
-GameBand.defaultProps = {
-  currentProblem: null,
-  previousAnswerCorrect: null,
-  error: null,
-};
-
-export default GameBand;

@@ -1,4 +1,6 @@
-function responses(state = [], action) {
+import { Action } from "redux";
+
+function responses(state = [], action: Action) {
   switch (action.type) {
     case "RESPOND": {
       const r = state.slice();

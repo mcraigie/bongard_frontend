@@ -1,4 +1,6 @@
-function nextProblemId(state = "", action) {
+import { Action } from "redux";
+
+function nextProblemId(state = "", action: Action) {
   switch (action.type) {
     case "SET_CURRENT_PROBLEM":
       return `${action.problem.nextProblemId}`;
