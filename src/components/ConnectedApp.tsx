@@ -12,8 +12,8 @@ function mapStateToProps(state: any) {
   return { ...state };
 }
 
-function mapDispatchToProps(dispatch: any) {
-  return { actions: bindActionCreators({ ...actionCreators, push }, dispatch) };
+function mapDispatchToProps(dispatch: any, ownProps: any) {
+  return { ...bindActionCreators({ ...actionCreators, push }, dispatch) };
 }
 
 const ConnectedApp = withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
