@@ -18,20 +18,14 @@ const history = createHistory();
 
 const middleware = routerMiddleware(history);
 
-// interface Window {
-//   __REDUX_DEVTOOLS_EXTENSION__: any;
-// }
-
-// const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-//   ? window.__REDUX_DEVTOOLS_EXTENSION__()
-//   : f => f;
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
     ...reducers,
     router: routerReducer,
   }),
-  compose(applyMiddleware(middleware)) // middleware), devTools
+  composeEnhancers(applyMiddleware(middleware))
 );
 
 ReactDOM.render(
