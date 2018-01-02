@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Switch, Route, RouteProps } from "react-router";
+import { Switch, Route } from "react-router";
 
 import { Home } from "./Home";
 import { Game } from "./Game";
@@ -19,7 +19,7 @@ export interface AppProps {
   actions: any;
 }
 
-export const App = (props: AppProps & RouteProps) => {
+export const App = (props: AppProps) => {
   const {
     currentProblem,
     previousAnswerCorrect,
