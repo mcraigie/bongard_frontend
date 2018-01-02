@@ -1,9 +1,3 @@
-export function setAsTouchDevice() {
-  return {
-    type: "SET_AS_TOUCH_DEVICE",
-  };
-}
-
 export function setCurrentProblem(problem) {
   return {
     type: "SET_CURRENT_PROBLEM",

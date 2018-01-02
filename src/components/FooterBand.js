@@ -1,23 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-import Button from './Button';
+import Button from "./Button";
 
-const FooterBand = ({ isTouchDevice }) => {
+const FooterBand = () => {
   const twitterButton = (
-    <Button
-      href="https://twitter.com/MaxCraigie"
-      className="twitter-button"
-      isTouchDevice={isTouchDevice}
-      text="@MaxCraigie"
-    />
+    <Button href="https://twitter.com/MaxCraigie" className="twitter-button" text="@MaxCraigie" />
   );
 
   const surveyButton = (
     <Button
       href="https://goo.gl/forms/2jUei1oCuMmx1FZ83"
       className="survey-button"
-      isTouchDevice={isTouchDevice}
       text="Click Here"
     />
   );
@@ -29,10 +22,6 @@ const FooterBand = ({ isTouchDevice }) => {
       </p>
     </div>
   );
-};
-
-FooterBand.propTypes = {
-  isTouchDevice: PropTypes.bool.isRequired,
 };
 
 export default FooterBand;

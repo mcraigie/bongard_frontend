@@ -1,32 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from "redux";
 
-import { connect } from 'react-redux';
-import { withRouter, Switch, Route } from 'react-router';
-import { push as unboundPush } from 'react-router-redux';
+import { connect } from "react-redux";
+import { withRouter, Switch, Route } from "react-router";
+import { push as unboundPush } from "react-router-redux";
 
-import * as actionCreators from '../actions/actionCreators';
+import * as actionCreators from "../actions/actionCreators";
 
-import Home from './Home';
-import Game from './Game';
-import NoMatch from './NoMatch';
+import Home from "./Home";
+import Game from "./Game";
+import NoMatch from "./NoMatch";
 
-import './App.css';
+import "./App.css";
 
 class App extends Component {
-  componentDidMount() {
-    const { setAsTouchDevice } = this.props.actions;
-
-    if ('ontouchstart' in document.documentElement) {
-      setAsTouchDevice();
-    }
-  }
-
   render() {
     const {
-      isTouchDevice,
       currentProblem,
       previousAnswerCorrect,
       loading,
@@ -34,16 +25,10 @@ class App extends Component {
       streaks,
       nextProblemId,
       displayInstructions,
-      responses
+      responses,
     } = this.props;
 
-    const {
-      setCurrentProblem,
-      setError,
-      respond,
-      push,
-      toggleInstructions,
-    } = this.props.actions;
+    const { setCurrentProblem, setError, respond, push, toggleInstructions } = this.props.actions;
 
     // could make this null if current problem not available
     function respondAndPush(answer) {
@@ -57,23 +42,13 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={routingProps => (
-              <Home
-                {...routingProps}
-                isTouchDevice={isTouchDevice}
-              />
-            )}
-          />
+          <Route exact path="/" render={routingProps => <Home {...routingProps} />} />
 
           <Route
             path="/problem/:problemId"
             render={routingProps => (
               <Game
                 {...routingProps}
-                isTouchDevice={isTouchDevice}
                 currentProblem={currentProblem}
                 previousAnswerCorrect={previousAnswerCorrect}
                 loading={loading}
@@ -88,7 +63,7 @@ class App extends Component {
             )}
           />
 
-          <Route component={NoMatch}/>
+          <Route component={NoMatch} />
         </Switch>
       </div>
     );
@@ -96,7 +71,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isTouchDevice: PropTypes.bool.isRequired,
   nextProblemId: PropTypes.string.isRequired,
   previousAnswerCorrect: PropTypes.bool,
   loading: PropTypes.bool.isRequired,

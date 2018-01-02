@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import HeaderBand from './HeaderBand';
-import FooterBand from './FooterBand';
+import HeaderBand from "./HeaderBand";
+import FooterBand from "./FooterBand";
 
-import StatusBand from './StatusBand';
-import Problem from './Problem';
-import BlankProblem from './BlankProblem';
+import StatusBand from "./StatusBand";
+import Problem from "./Problem";
+import BlankProblem from "./BlankProblem";
 
 class GameBand extends Component {
   constructor(props) {
@@ -31,17 +31,13 @@ class GameBand extends Component {
 
     fetch(`http://127.0.0.1:8080/${problemId}.json`)
       .then(res => res.json())
-      .then(
-        currentProblem => setCurrentProblem(currentProblem),
-        error => setError(error)
-      );
+      .then(currentProblem => setCurrentProblem(currentProblem), error => setError(error));
   }
 
   render() {
     const {
       loading,
       currentProblem,
-      isTouchDevice,
       previousAnswerCorrect,
       handleAnswer,
       streaks,
@@ -49,18 +45,14 @@ class GameBand extends Component {
       displayInstructions,
     } = this.props;
 
-    let body = <p className="incorrect" >Something went wrong while trying to contact the server :(</p>;
+    let body = (
+      <p className="incorrect">Something went wrong while trying to contact the server :(</p>
+    );
 
     if (loading) {
       body = <BlankProblem />;
     } else if (currentProblem) {
-      body = (
-        <Problem
-          isTouchDevice={isTouchDevice}
-          problem={currentProblem}
-          handleAnswer={handleAnswer}
-        />
-      );
+      body = <Problem problem={currentProblem} handleAnswer={handleAnswer} />;
     }
 
     return (
@@ -68,7 +60,6 @@ class GameBand extends Component {
         <HeaderBand
           bestStreak={streaks.best}
           currentStreak={streaks.current}
-          isTouchDevice={isTouchDevice}
           toggleInstructions={toggleInstructions}
           displayInstructions={displayInstructions}
         />
@@ -80,14 +71,13 @@ class GameBand extends Component {
 
         {body}
 
-        <FooterBand isTouchDevice={isTouchDevice} />
+        <FooterBand />
       </div>
     );
   }
 }
 
 GameBand.propTypes = {
-  isTouchDevice: PropTypes.bool.isRequired,
   currentProblem: PropTypes.shape({
     id: PropTypes.string,
     followers: PropTypes.array,
