@@ -9,11 +9,6 @@ import Problem from "./Problem";
 import BlankProblem from "./BlankProblem";
 
 class GameBand extends Component {
-  constructor(props) {
-    super(props);
-    this.requestProblem = this.requestProblem.bind(this);
-  }
-
   componentDidMount() {
     this.requestProblem(this.props.match.params.problemId);
   }
@@ -26,13 +21,13 @@ class GameBand extends Component {
     }
   }
 
-  requestProblem(problemId) {
+  requestProblem = problemId => {
     const { setCurrentProblem, setError } = this.props;
 
     fetch(`http://127.0.0.1:8080/${problemId}.json`)
       .then(res => res.json())
       .then(currentProblem => setCurrentProblem(currentProblem), error => setError(error));
-  }
+  };
 
   render() {
     const {
