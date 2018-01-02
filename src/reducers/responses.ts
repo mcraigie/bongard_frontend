@@ -1,13 +1,13 @@
-import { Action } from "redux";
+import { ActionTypes, TypeKeys } from  "../types/action_types";
 
-function responses(state = [], action: Action) {
+function responses(state: Array<Answer> = [], action: ActionTypes) {
   switch (action.type) {
-    case "RESPOND": {
+    case TypeKeys.RESPOND: {
       const r = state.slice();
 
       r.push({
         problemId: action.problem.id,
-        answer: action.answer,
+        answerId: action.answer,
       });
 
       return r;

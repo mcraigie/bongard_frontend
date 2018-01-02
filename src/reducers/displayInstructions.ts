@@ -1,10 +1,10 @@
-import { Action } from "redux";
+import { ActionTypes, TypeKeys } from  "../types/action_types";
 
-function displayInstructions(state = true, action: Action) {
+function displayInstructions(state = true, action: ActionTypes) {
   switch (action.type) {
-    case "TOGGLE_INSTRUCTIONS":
+    case TypeKeys.TOGGLE:
       return !state;
-    case "RESPOND":
+    case TypeKeys.RESPOND:
       return false;
     default:
       return state;

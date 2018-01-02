@@ -16,7 +16,11 @@ export interface AppProps extends RouteComponentProps<{}> {
   nextProblemId: string;
   displayInstructions: boolean;
   responses: Array<Answer>;
-  actions: any;
+  setCurrentProblem: (problem: Problem) => void;
+  setError: (error: Error) => void;
+  respond: (problem: Problem, answer: string) => void;
+  push: (url: string) => void;
+  toggleInstructions: () => void;
 }
 
 export const App = (props: AppProps) => {
@@ -29,10 +33,12 @@ export const App = (props: AppProps) => {
     nextProblemId,
     displayInstructions,
     responses,
-    actions,
+    setCurrentProblem,
+    setError,
+    respond,
+    push,
+    toggleInstructions,
   } = props;
-
-  const { setCurrentProblem, setError, respond, push, toggleInstructions } = actions;
 
   // could make this null if current problem not available
   function respondAndPush(answer: string) {

@@ -1,12 +1,12 @@
-import { Action } from "redux";
+import { ActionTypes, TypeKeys } from  "../types/action_types";
 
-function currentProblem(state = null, action: Action) {
+function currentProblem(state = null, action: ActionTypes) {
   switch (action.type) {
-    case "SET_CURRENT_PROBLEM":
+    case TypeKeys.SET_PROBLEM:
       return { ...action.problem };
-    case "SET_ERROR":
+    case TypeKeys.SET_ERROR:
       return null;
-    case "RESPOND":
+    case TypeKeys.RESPOND:
       return null;
     default:
       return state;

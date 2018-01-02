@@ -1,8 +1,8 @@
-import { Action } from "redux";
+import { ActionTypes, TypeKeys } from  "../types/action_types";
 
-function previousAnswerCorrect(state = null, action: Action) {
+function previousAnswerCorrect(state = null, action: ActionTypes) {
   switch (action.type) {
-    case "RESPOND":
+    case TypeKeys.RESPOND:
       return action.problem.correctAnswerId === action.answer;
     default:
       return state;

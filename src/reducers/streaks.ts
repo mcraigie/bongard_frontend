@@ -1,8 +1,8 @@
-import { Action } from "redux";
+import { ActionTypes, TypeKeys } from  "../types/action_types";
 
-function streaks(state = { best: 0, current: 0 }, action: Action) {
+function streaks(state = { best: 0, current: 0 }, action: ActionTypes) {
   switch (action.type) {
-    case "RESPOND": {
+    case TypeKeys.RESPOND: {
       let { best, current } = state;
 
       if (action.problem.correctAnswerId === action.answer) {

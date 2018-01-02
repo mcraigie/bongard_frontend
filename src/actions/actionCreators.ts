@@ -1,27 +1,29 @@
-export function setCurrentProblem(problem: Problem) {
+import { TypeKeys, ErrorAction, ResponseAction, ProblemAction, ToggleAction } from "../types/action_types";
+
+export function setCurrentProblem(problem: Problem): ProblemAction {
   return {
-    type: "SET_CURRENT_PROBLEM",
+    type: TypeKeys.SET_PROBLEM,
     problem,
   };
 }
 
-export function setError(error: Error) {
+export function setError(error: Error): ErrorAction{
   return {
-    type: "SET_ERROR",
+    type: TypeKeys.SET_ERROR,
     error,
   };
 }
 
-export function respond(problem: Problem, answer: Answer) {
+export function respond(problem: Problem, answer: string): ResponseAction {
   return {
-    type: "RESPOND",
+    type: TypeKeys.RESPOND,
     problem,
     answer,
   };
 }
 
-export function toggleInstructions() {
+export function toggleInstructions(): ToggleAction {
   return {
-    type: "TOGGLE_INSTRUCTIONS",
+    type: TypeKeys.TOGGLE,
   };
 }

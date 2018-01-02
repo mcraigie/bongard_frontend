@@ -1,14 +1,14 @@
-import { Action } from "redux";
+import { ActionTypes, TypeKeys } from  "../types/action_types";
 
-function loading(state = true, action: Action) {
+function loading(state = true, action: ActionTypes) {
   switch (action.type) {
-    case "SET_CURRENT_PROBLEM":
+    case TypeKeys.SET_PROBLEM:
       return false;
-    case "SET_ERROR":
+    case TypeKeys.SET_ERROR:
       return false;
-    case "RESPOND":
+    case TypeKeys.RESPOND:
       return true;
-    case "@@router/LOCATION_CHANGE":
+    case TypeKeys.LOCATION_CHANGE:
       return true;
     default:
       return state;
