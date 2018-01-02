@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Instructions from './Instructions';
-import PreviousResult from './PreviousResult';
+import Instructions from "./Instructions";
+import PreviousResult from "./PreviousResult";
 
 const StatusBand = ({ previousAnswerCorrect, displayInstructions }) => {
   let content = null;
@@ -13,11 +13,7 @@ const StatusBand = ({ previousAnswerCorrect, displayInstructions }) => {
     content = <PreviousResult previousAnswerCorrect={previousAnswerCorrect} />;
   }
 
-  return (
-    <div className="status-band">
-      {content}
-    </div>
-  );
+  return <div className="status-band">{content}</div>;
 };
 
 StatusBand.propTypes = {

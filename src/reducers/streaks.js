@@ -1,6 +1,6 @@
 function streaks(state = { best: 0, current: 0 }, action) {
   switch (action.type) {
-    case 'RESPOND': {
+    case "RESPOND": {
       let { best, current } = state;
 
       if (action.problem.correctAnswerId === action.answer) {
@@ -16,7 +16,8 @@ function streaks(state = { best: 0, current: 0 }, action) {
       return { best, current };
     }
 
-    default: return state;
+    default:
+      return state;
   }
 }
 

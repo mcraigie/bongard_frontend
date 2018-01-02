@@ -1,6 +1,6 @@
 function responses(state = [], action) {
   switch (action.type) {
-    case 'RESPOND': {
+    case "RESPOND": {
       const r = state.slice();
 
       r.push({
@@ -10,7 +10,8 @@ function responses(state = [], action) {
 
       return r;
     }
-    default: return state;
+    default:
+      return state;
   }
 }
 
