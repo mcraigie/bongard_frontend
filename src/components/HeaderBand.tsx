@@ -6,7 +6,7 @@ export interface HeaderBandProps {
   currentStreak: number;
   bestStreak: number;
   displayInstructions: boolean;
-  toggleInstructions: any;
+  toggleInstructions: () => void;
 }
 
 export const HeaderBand = (props: HeaderBandProps) => {

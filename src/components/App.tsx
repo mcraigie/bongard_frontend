@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, RouteComponentProps } from "react-router";
 
 import { Home } from "./Home";
 import { Game } from "./Game";
@@ -7,7 +7,7 @@ import { NoMatch } from "./NoMatch";
 
 import "./App.css";
 
-export interface AppProps {
+export interface AppProps extends RouteComponentProps<{}> {
   currentProblem: Problem;
   previousAnswerCorrect: boolean;
   loading: boolean;

@@ -8,7 +8,7 @@ import * as actionCreators from "../actions/actionCreators";
 
 import { App } from "./App";
 
-function mapStateToProps(state: object) {
+function mapStateToProps(state: any) {
   return { ...state };
 }
 

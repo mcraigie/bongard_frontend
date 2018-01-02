@@ -4,7 +4,7 @@ import { isTouchDevice } from "../utils";
 
 export interface ButtonProps {
   href?: string;
-  onClick?: any;
+  onClick?: () => void;
   className: string;
   text: string;
 }

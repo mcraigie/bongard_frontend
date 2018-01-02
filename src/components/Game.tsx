@@ -1,4 +1,5 @@
 import * as React from "react";
+import { RouteComponentProps } from "react-router";
 
 import { HeaderBand } from "./HeaderBand";
 import { FooterBand } from "./FooterBand";
@@ -7,30 +8,30 @@ import { StatusBand } from "./StatusBand";
 import { Problem } from "./Problem";
 import { BlankProblem } from "./BlankProblem";
 
-export interface GameProps {
+export interface GameProps extends RouteComponentProps<{ problemId: string }> {
   loading: boolean;
   currentProblem: Problem;
   previousAnswerCorrect?: boolean;
-  handleAnswer: any;
+  handleAnswer: (id: string) => void;
   streaks: Streaks;
-  toggleInstructions: any;
+  toggleInstructions: () => void;
   displayInstructions: boolean;
-  match: any;
-  setCurrentProblem: any;
-  setError: any;
+  setCurrentProblem: (problem: Problem) => void;
+  setError: (error: Error) => void;
   error: Error;
 }
 
-export class Game extends React.Component<GameProps, {}> {
+export class Game extends React.Component<GameProps> {
   componentDidMount() {
-    this.requestProblem(this.props.match.params.problemId);
+    const { match } = this.props;
+    this.requestProblem(match.params.problemId);
   }
 
   componentDidUpdate() {
-    const { loading } = this.props;
+    const { loading, match } = this.props;
 
     if (loading) {
-      this.requestProblem(this.props.match.params.problemId);
+      this.requestProblem(match.params.problemId);
     }
   }
 

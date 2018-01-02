@@ -6,7 +6,7 @@ export interface DiagramProps {
   id: string;
   specification: Array<Array<Cell>>;
   isAnswerColumn: boolean;
-  handleAnswer: any;
+  handleAnswer?: (id: string) => void;
 }
 
 export const Diagram = (props: DiagramProps) => {
@@ -15,7 +15,7 @@ export const Diagram = (props: DiagramProps) => {
   return (
     <div
       className={isAnswerColumn && !isTouchDevice() ? "diagram hoverable" : "diagram"}
-      onClick={isAnswerColumn ? () => handleAnswer(id) : f => f} // TODO: dummy func best practices?
+      onClick={isAnswerColumn && handleAnswer ? () => handleAnswer(id) : f => f} // TODO: dummy func best practices?
       role="button" // TODO: enable full keyboard support. not a button if isAnswerColumn is false
     >
       {specification.map((row, yPos) =>

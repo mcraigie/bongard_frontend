@@ -6,7 +6,7 @@ export interface NamedColumnProps {
   name: string;
   isAnswerColumn: boolean;
   diagrams: Array<Diagram>;
-  handleAnswer?: any;
+  handleAnswer?: (id: string) => void;
 }
 
 export const NamedColumn = (props: NamedColumnProps) => {
