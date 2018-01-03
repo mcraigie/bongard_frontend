@@ -7,12 +7,12 @@ export const BlankProblem = () => (
         <h2>Followers</h2>
       </div>
       <div className="diagram-set">
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
       </div>
     </div>
     <div className="named-column">
@@ -20,12 +20,12 @@ export const BlankProblem = () => (
         <h2>Rogues</h2>
       </div>
       <div className="diagram-set">
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
       </div>
     </div>
     <div className="named-column">
@@ -33,9 +33,9 @@ export const BlankProblem = () => (
         <h2>?</h2>
       </div>
       <div className="answer-set">
-        <div className="diagram" />
-        <div className="diagram" />
-        <div className="diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
+        <div className="dummy-diagram" />
       </div>
     </div>
   </div>

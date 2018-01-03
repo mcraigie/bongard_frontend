@@ -111,6 +111,12 @@ body {
   /*background: rgba(255,138,140,1);*/
 }
 
+.dummy-diagram {
+  width: 6vw;
+  height: 6vw;
+  margin: 0.6vw auto;
+}
+
 .cell {
   border: 0.112vw solid var(--color-three);
   width: 2vw;
