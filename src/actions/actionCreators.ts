@@ -1,4 +1,4 @@
-import { TypeKeys, ErrorAction, ResponseAction, ProblemAction, ToggleAction } from "../types/action_types";
+import { TypeKeys, ErrorAction, ResponseAction, ProblemAction, ToggleAction } from "../action_types";
 
 export function setCurrentProblem(problem: Problem): ProblemAction {
   return {

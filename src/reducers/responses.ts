@@ -1,4 +1,4 @@
-import { ActionTypes, TypeKeys } from  "../types/action_types";
+import { ActionTypes, TypeKeys } from  "../action_types";
 
 function responses(state: Array<Answer> = [], action: ActionTypes) {
   switch (action.type) {
