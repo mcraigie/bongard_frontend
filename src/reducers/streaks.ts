@@ -1,6 +1,6 @@
 import { ActionTypes, TypeKeys } from  "../action_types";
 
-function streaks(state = { best: 0, current: 0 }, action: ActionTypes) {
+function streaks(state: Streaks = { best: 0, current: 0 }, action: ActionTypes) {
   switch (action.type) {
     case TypeKeys.RESPOND: {
       let { best, current } = state;

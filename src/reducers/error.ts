@@ -1,6 +1,6 @@
 import { ActionTypes, TypeKeys } from  "../action_types";
 
-function error(state = null, action: ActionTypes) {
+function error(state: Error | null = null, action: ActionTypes) {
   switch (action.type) {
     case TypeKeys.SET_ERROR:
       return { ...action.error };

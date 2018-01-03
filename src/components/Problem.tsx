@@ -15,7 +15,12 @@ export const Problem = (props: ProblemProps) => {
 
       <NamedColumn name="Rogues" diagrams={problem.rogues} isAnswerColumn={false} />
 
-      <NamedColumn name="?" isAnswerColumn diagrams={problem.answers} handleAnswer={handleAnswer} />
+      <NamedColumn
+        name="?"
+        diagrams={problem.answers}
+        isAnswerColumn={true}
+        handleAnswer={handleAnswer}
+      />
     </div>
   );
 };

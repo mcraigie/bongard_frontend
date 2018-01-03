@@ -1,6 +1,6 @@
 import { ActionTypes, TypeKeys } from  "../action_types";
 
-function loading(state = true, action: ActionTypes) {
+function loading(state: boolean = true, action: ActionTypes) {
   switch (action.type) {
     case TypeKeys.SET_PROBLEM:
       return false;

@@ -52,7 +52,7 @@ export const App = (props: AppProps) => {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact={true} path="/" component={Home} />
 
         <Route
           path="/problem/:problemId"

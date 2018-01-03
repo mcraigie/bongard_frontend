@@ -7,7 +7,7 @@ export function setCurrentProblem(problem: Problem): ProblemAction {
   };
 }
 
-export function setError(error: Error): ErrorAction{
+export function setError(error: Error): ErrorAction {
   return {
     type: TypeKeys.SET_ERROR,
     error,
