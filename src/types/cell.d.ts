@@ -1,0 +1,3 @@
+interface Cell {
+  variety: string;
+}
