@@ -1,4 +1,4 @@
-function loadingProblem(state: boolean = true, action: ActionTypes) {
+function loadingProblem(state: boolean = true, action: Actions) {
   switch (action.type) {
     case "SET_PROBLEM":
       return false;

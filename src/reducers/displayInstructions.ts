@@ -1,4 +1,4 @@
-function displayInstructions(state: boolean = true, action: ActionTypes) {
+function displayInstructions(state: boolean = true, action: Actions) {
   switch (action.type) {
     case "TOGGLE_INSTRUCTIONS":
       return !state;

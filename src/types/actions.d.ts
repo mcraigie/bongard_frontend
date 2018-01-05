@@ -17,4 +17,4 @@ interface LocationAction {
   type: "@@router/LOCATION_CHANGE";
 }
 
-type ActionTypes = ProblemAction | ResponseAction | ToggleAction | LocationAction;
+type Actions = ProblemAction | ResponseAction | ToggleAction | LocationAction;

@@ -1,4 +1,4 @@
-function currentProblem(state: Problem | null = null, action: ActionTypes) {
+function currentProblem(state: Problem | null = null, action: Actions) {
   switch (action.type) {
     case "SET_PROBLEM":
       return { ...action.problem };
