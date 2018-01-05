@@ -8,10 +8,12 @@ import * as actionCreators from "../actions/actionCreators";
 
 import { App } from "./App";
 
+// tslint:disable-next-line: no-any
 function mapStateToProps(state: any) {
   return { ...state };
 }
 
+// tslint:disable-next-line: no-any
 function mapDispatchToProps(dispatch: any, ownProps: any) {
   return { ...bindActionCreators({ ...actionCreators, push }, dispatch) };
 }
