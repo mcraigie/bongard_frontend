@@ -8,45 +8,34 @@ import { NoMatch } from "./NoMatch";
 import "./App.css";
 
 export interface AppProps extends RouteComponentProps<{}> {
+  user: User;
   currentProblem: Problem;
-  previousAnswerCorrect: boolean;
   loading: boolean;
-  error: Error;
-  streaks: Streaks;
-  nextProblemId: string;
   displayInstructions: boolean;
-  responses: Array<Answer>;
   setCurrentProblem: (problem: Problem) => void;
   setError: (error: Error) => void;
   respond: (problem: Problem, answer: string) => void;
   push: (url: string) => void;
-  toggleInstructions: () => void;
+  toggleDisplayingInstructions: () => void;
 }
 
 export const App = (props: AppProps) => {
   const {
+    user,
     currentProblem,
-    previousAnswerCorrect,
     loading,
-    error,
-    streaks,
-    nextProblemId,
     displayInstructions,
-    responses,
     setCurrentProblem,
     setError,
     respond,
     push,
-    toggleInstructions,
+    toggleDisplayingInstructions,
   } = props;
 
   // could make this null if current problem not available
   function respondAndPush(answer: string) {
-    if (responses.filter(r => r.problemId === currentProblem.id).length === 0) {
-      respond(currentProblem, answer);
-    }
-
-    push(`/problem/${nextProblemId}`);
+    respond(currentProblem, answer);
+    push(`/problem/${user.nextProblemId}`);
   }
 
   return (
@@ -64,14 +53,12 @@ export const App = (props: AppProps) => {
             <Game
               {...routingProps}
               currentProblem={currentProblem}
-              previousAnswerCorrect={previousAnswerCorrect}
               loading={loading}
-              error={error}
               setCurrentProblem={setCurrentProblem}
               setError={setError}
               handleAnswer={respondAndPush}
-              streaks={streaks}
-              toggleInstructions={toggleInstructions}
+              user={user}
+              toggleDisplayingInstructions={toggleDisplayingInstructions}
               displayInstructions={displayInstructions}
             />
           )}

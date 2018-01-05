@@ -1,6 +1,4 @@
-import { ActionTypes, TypeKeys } from  "../action_types";
-
-function loading(state: boolean = true, action: ActionTypes) {
+function loadingProblem(state: boolean = true, action: ActionTypes) {
   switch (action.type) {
     case TypeKeys.SET_PROBLEM:
       return false;
@@ -15,4 +13,4 @@ function loading(state: boolean = true, action: ActionTypes) {
   }
 }
 
-export default loading;
+export default loadingProblem;

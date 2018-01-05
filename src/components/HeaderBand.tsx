@@ -6,17 +6,17 @@ export interface HeaderBandProps {
   currentStreak: number;
   bestStreak: number;
   displayInstructions: boolean;
-  toggleInstructions: () => void;
+  toggleDisplayingInstructions: () => void;
 }
 
 export const HeaderBand = (props: HeaderBandProps) => {
-  const { currentStreak, bestStreak, toggleInstructions, displayInstructions } = props;
+  const { currentStreak, bestStreak, toggleDisplayingInstructions, displayInstructions } = props;
 
   return (
     <div className="header-band">
       <p className="sub-text">
         <Button
-          onClick={toggleInstructions}
+          onClick={toggleDisplayingInstructions}
           className="twitter-button"
           text={`${displayInstructions ? "Hide" : "Show"} Instructions`}
         />

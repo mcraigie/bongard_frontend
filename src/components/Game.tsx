@@ -11,14 +11,12 @@ import { BlankProblem } from "./BlankProblem";
 export interface GameProps extends RouteComponentProps<{ problemId: string }> {
   loading: boolean;
   currentProblem: Problem;
-  previousAnswerCorrect?: boolean;
   handleAnswer: (id: string) => void;
-  streaks: Streaks;
-  toggleInstructions: () => void;
+  user: User;
+  toggleDisplayingInstructions: () => void;
   displayInstructions: boolean;
   setCurrentProblem: (problem: Problem) => void;
   setError: (error: Error) => void;
-  error: Error;
 }
 
 export class Game extends React.Component<GameProps> {
@@ -47,10 +45,9 @@ export class Game extends React.Component<GameProps> {
     const {
       loading,
       currentProblem,
-      previousAnswerCorrect,
       handleAnswer,
-      streaks,
-      toggleInstructions,
+      user,
+      toggleDisplayingInstructions,
       displayInstructions,
     } = this.props;
 
@@ -67,14 +64,14 @@ export class Game extends React.Component<GameProps> {
     return (
       <div className="game-band">
         <HeaderBand
-          bestStreak={streaks.best}
-          currentStreak={streaks.current}
-          toggleInstructions={toggleInstructions}
+          bestStreak={user.bestStreak}
+          currentStreak={user.currentStreak}
+          toggleDisplayingInstructions={toggleDisplayingInstructions}
           displayInstructions={displayInstructions}
         />
 
         <StatusBand
-          previousAnswerCorrect={previousAnswerCorrect}
+          previousAnswerCorrect={user.previousResponseCorrect}
           displayInstructions={displayInstructions}
         />
 

@@ -1,19 +1,11 @@
+import user from "./user";
 import currentProblem from "./currentProblem";
-import error from "./error";
-import loading from "./loading";
-import responses from "./responses";
-import streaks from "./streaks";
-import nextProblemId from "./nextProblemId";
-import previousAnswerCorrect from "./previousAnswerCorrect";
+import loadingProblem from "./loadingProblem";
 import displayInstructions from "./displayInstructions";
 
 export {
-  error,
+  user,
   currentProblem,
-  loading,
-  responses,
-  streaks,
-  nextProblemId,
-  previousAnswerCorrect,
+  loadingProblem,
   displayInstructions,
 };

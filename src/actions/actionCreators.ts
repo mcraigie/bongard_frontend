@@ -1,16 +1,7 @@
-import { TypeKeys, ErrorAction, ResponseAction, ProblemAction, ToggleAction } from "../action_types";
-
 export function setCurrentProblem(problem: Problem): ProblemAction {
   return {
     type: TypeKeys.SET_PROBLEM,
     problem,
-  };
-}
-
-export function setError(error: Error): ErrorAction {
-  return {
-    type: TypeKeys.SET_ERROR,
-    error,
   };
 }
 
@@ -22,8 +13,8 @@ export function respond(problem: Problem, answer: string): ResponseAction {
   };
 }
 
-export function toggleInstructions(): ToggleAction {
+export function toggleDisplayingInstructions(): ToggleAction {
   return {
-    type: TypeKeys.TOGGLE,
+    type: TypeKeys.TOGGLE_INSTRUCTIONS,
   };
 }

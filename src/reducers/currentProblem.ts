@@ -1,5 +1,3 @@
-import { ActionTypes, TypeKeys } from  "../action_types";
-
 function currentProblem(state: Problem | null = null, action: ActionTypes) {
   switch (action.type) {
     case TypeKeys.SET_PROBLEM:

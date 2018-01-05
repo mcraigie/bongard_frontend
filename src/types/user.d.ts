@@ -3,6 +3,6 @@ interface User {
   bestStreak: number;
   currentStreak: number;
   score: number;
-  nextProblemId: string;
+  nextProblemId?: string;
   previousResponseCorrect?: boolean;
 }
