@@ -1,8 +1,8 @@
 function displayInstructions(state: boolean = true, action: ActionTypes) {
   switch (action.type) {
-    case TypeKeys.TOGGLE_INSTRUCTIONS:
+    case "TOGGLE_INSTRUCTIONS":
       return !state;
-    case TypeKeys.RESPOND:
+    case "RESPOND":
       return false;
     default:
       return state;

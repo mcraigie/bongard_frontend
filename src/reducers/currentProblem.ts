@@ -1,10 +1,8 @@
 function currentProblem(state: Problem | null = null, action: ActionTypes) {
   switch (action.type) {
-    case TypeKeys.SET_PROBLEM:
+    case "SET_PROBLEM":
       return { ...action.problem };
-    case TypeKeys.SET_ERROR:
-      return null;
-    case TypeKeys.RESPOND:
+    case "RESPOND":
       return null;
     default:
       return state;

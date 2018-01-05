@@ -1,12 +1,10 @@
 function loadingProblem(state: boolean = true, action: ActionTypes) {
   switch (action.type) {
-    case TypeKeys.SET_PROBLEM:
+    case "SET_PROBLEM":
       return false;
-    case TypeKeys.SET_ERROR:
-      return false;
-    case TypeKeys.RESPOND:
+    case "RESPOND":
       return true;
-    case TypeKeys.LOCATION_CHANGE:
+    case "@@router/LOCATION_CHANGE":
       return true;
     default:
       return state;
