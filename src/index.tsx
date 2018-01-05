@@ -10,14 +10,13 @@ import createHistory from "history/createBrowserHistory";
 import ConnectedApp from "./components/ConnectedApp";
 import * as reducers from "./reducers/index";
 
-import registerServiceWorker from "./registerServiceWorker";
-
 import "./index.css";
 
 const history = createHistory();
 
 const middleware = routerMiddleware(history);
 
+// tslint:disable-next-line: no-any
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
@@ -36,5 +35,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-registerServiceWorker();
