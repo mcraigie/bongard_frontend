@@ -38,7 +38,7 @@ export class Game extends React.Component<GameProps> {
   requestProblem = (problemId: string) => {
     const { setCurrentProblem, setError } = this.props;
 
-    fetch(`http://127.0.0.1:8080/${problemId}.json`)
+    fetch(`/${problemId}.json`)
       .then(res => res.json())
       .then(currentProblem => setCurrentProblem(currentProblem), error => setError(error));
   };
