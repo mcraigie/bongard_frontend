@@ -11,6 +11,8 @@ build
 scrap
 json
 
+public/*.json
+
 # misc
 .DS_Store
 .env.local
