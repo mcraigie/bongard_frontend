@@ -26,13 +26,15 @@ interface FetchUserSuccess {
   response: User;
 }
 
-// interface Respond {
-//   type: "RESPOND";
-//   problem: Problem;
-//   diagramId: string;
-// }
+interface BeginResponse {
+  type: "BEGIN_RESPONSE";
+}
 
-interface ToggleAction {
+interface EndResponse {
+  type: "END_RESPONSE";
+}
+
+interface ToggleInstructions {
   type: "TOGGLE_INSTRUCTIONS";
 }
 
@@ -44,4 +46,6 @@ type FetchProblem = FetchProblemRequest | FetchProblemFailure | FetchProblemSucc
 
 type FetchUser = FetchUserRequest | FetchUserFailure | FetchUserSuccess;
 
-type Actions = FetchProblem | FetchUser | ToggleAction | LocationAction;
+type Respond = BeginResponse | EndResponse;
+
+type Actions = FetchProblem | FetchUser | Respond | ToggleInstructions | LocationAction;

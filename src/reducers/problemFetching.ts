@@ -1,4 +1,4 @@
-export default function problemFetching(state: boolean = true, action: Actions) {
+export default function problemFetching(state: boolean = false, action: Actions) {
   switch (action.type) {
     case "FETCH_PROBLEM_REQUEST":
       return true;

@@ -38,15 +38,19 @@ export function fetchUserSuccess(response: User): FetchUserSuccess {
   };
 }
 
-// export function respond(problem: Problem, diagramId: string): Respond {
-//   return {
-//     type: "RESPOND",
-//     problem,
-//     diagramId,
-//   };
-// }
+export function beginResponse(): BeginResponse {
+  return {
+    type: "BEGIN_RESPONSE",
+  };
+}
 
-export function toggleDisplayingInstructions(): ToggleAction {
+export function endResponse(): EndResponse {
+  return {
+    type: "END_RESPONSE",
+  };
+}
+
+export function toggleDisplayingInstructions(): ToggleInstructions {
   return {
     type: "TOGGLE_INSTRUCTIONS",
   };

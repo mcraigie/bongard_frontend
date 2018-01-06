@@ -4,7 +4,7 @@ import { NamedColumn } from "./NamedColumn";
 
 export interface ProblemProps {
   problem: Problem;
-  handleAnswer: (id: string) => void;
+  handleAnswer?: (id: string) => void;
 }
 
 export const Problem = (props: ProblemProps) => {

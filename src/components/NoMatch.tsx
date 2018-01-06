@@ -1,4 +1,12 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
 
-export const NoMatch = () => <Link to="">No matching page found. Click this to return home.</Link>;
+export class NoMatch extends React.Component<RouteComponentProps<{}>> {
+  componentDidMount() {
+    this.props.history.push("/problem/ccf8b282e3f753bb0e5158ddd429a7be");
+  }
+
+  render() {
+    return <p>Page not found.</p>;
+  }
+}

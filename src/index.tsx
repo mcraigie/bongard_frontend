@@ -4,11 +4,16 @@ import * as ReactDOM from "react-dom";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 
+import { Switch, Route } from "react-router";
+
 import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 
 import ConnectedApp from "./components/ConnectedApp";
 import * as reducers from "./reducers/_index";
+
+import { About } from "./components/About";
+import { NoMatch } from "./components/NoMatch";
 
 import "./index.css";
 
@@ -30,7 +35,13 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <ConnectedApp />
+      <Switch>
+        {/* <Route exact={true} path="/" component={Home} /> */}
+        <Route path="/problem/:problemId" component={ConnectedApp} />
+        <Route path="/about" component={About} />
+        {/* <Route path="/:user" component={User} /> */}
+        <Route component={NoMatch} />
+      </Switch>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")

@@ -11,7 +11,7 @@ export interface GameProps {
   user: User;
   problem: Problem | null;
   displayInstructions: boolean;
-  handleAnswer: (id: string) => void;
+  handleAnswer?: (id: string) => void;
   toggleDisplayingInstructions: () => void;
 }
 

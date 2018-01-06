@@ -1,22 +1,28 @@
 import * as React from "react";
-import { Switch, Route, RouteComponentProps } from "react-router";
+import { RouteComponentProps } from "react-router";
 
-import { Home } from "./Home";
 import { Game } from "./Game";
-import { NoMatch } from "./NoMatch";
 
 import "./App.css";
 
 export interface AppProps extends RouteComponentProps<{ problemId: string }> {
   user: User;
+  userFetching: boolean;
+  userFetchingFailure: string | null;
   problem: Problem | null;
   problemFetching: boolean;
   problemFetchingFailure: string | null;
   problemValid: boolean;
   displayInstructions: boolean;
+  responding: boolean;
   fetchProblemRequest: () => void;
   fetchProblemFailure: (errorMessage: string) => void;
   fetchProblemSuccess: (response: Problem) => void;
+  fetchUserRequest: () => void;
+  fetchUserFailure: (errorMessage: string) => void;
+  fetchUserSuccess: (response: User) => void;
+  beginResponse: () => void;
+  endResponse: () => void;
   push: (url: string) => void;
   toggleDisplayingInstructions: () => void;
 }
@@ -26,7 +32,7 @@ export class App extends React.Component<AppProps> {
     const { problemValid } = this.props;
 
     if (!problemValid) {
-      this.blah();
+      this.fetchProblem();
     }
   }
 
@@ -34,11 +40,11 @@ export class App extends React.Component<AppProps> {
     const { problemValid } = this.props;
 
     if (!problemValid) {
-      this.blah();
+      this.fetchProblem();
     }
   }
 
-  blah = () => {
+  fetchProblem = () => {
     const { fetchProblemRequest, fetchProblemFailure, fetchProblemSuccess, match } = this.props;
 
     fetchProblemRequest();
@@ -48,35 +54,66 @@ export class App extends React.Component<AppProps> {
       .then(response => fetchProblemSuccess(response), error => fetchProblemFailure(error.message));
   };
 
-  render() {
-    const { user, problem, displayInstructions, push, toggleDisplayingInstructions } = this.props;
+  foo = async (diagramId: string) => {
+    const {
+      user,
+      fetchUserRequest,
+      fetchUserFailure,
+      fetchUserSuccess,
+      problem,
+      responding,
+      beginResponse,
+      endResponse,
+      push,
+    } = this.props;
 
-    const respondAndPush = (f: string) => null;
+    if (problem == null || responding) {
+      return;
+    }
+
+    beginResponse();
+
+    try {
+      await fetch("/response/", {
+        method: "POST",
+        body: { answer: diagramId, user: user.id, problem: problem.id },
+      });
+
+      fetchUserRequest();
+
+      try {
+        const updatedUser = await fetch(`/user/${user.id}`).then(r => r.json());
+        fetchUserSuccess(updatedUser);
+        push(updatedUser.nextProblemId);
+      } catch (e) {
+        // tslint:disable: no-console
+        console.log(e);
+        fetchUserFailure(e.message);
+      }
+    } catch (e) {
+      // tslint:disable: no-console
+      console.log(e);
+    }
+
+    endResponse();
+  };
+
+  render() {
+    const { user, problem, displayInstructions, toggleDisplayingInstructions } = this.props;
+
+    const handleAnswer = (diagramId: string) => {
+      this.foo(diagramId);
+    };
 
     return (
       <div className="App">
-        <Switch>
-          <Route
-            exact={true}
-            path="/"
-            render={routingProps => <Home {...routingProps} push={push} />}
-          />
-
-          <Route
-            path="/problem/:problemId"
-            render={routingProps => (
-              <Game
-                problem={problem}
-                handleAnswer={respondAndPush}
-                user={user}
-                toggleDisplayingInstructions={toggleDisplayingInstructions}
-                displayInstructions={displayInstructions}
-              />
-            )}
-          />
-
-          <Route component={NoMatch} />
-        </Switch>
+        <Game
+          problem={problem}
+          handleAnswer={handleAnswer}
+          user={user}
+          toggleDisplayingInstructions={toggleDisplayingInstructions}
+          displayInstructions={displayInstructions}
+        />
       </div>
     );
   }
