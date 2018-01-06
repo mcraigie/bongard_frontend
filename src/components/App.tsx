@@ -54,7 +54,7 @@ export class App extends React.Component<AppProps> {
       .then(response => fetchProblemSuccess(response), error => fetchProblemFailure(error.message));
   };
 
-  foo = async (diagramId: string) => {
+  respondAndProceed = async (diagramId: string) => {
     const {
       user,
       fetchUserRequest,
@@ -102,7 +102,7 @@ export class App extends React.Component<AppProps> {
     const { user, problem, displayInstructions, toggleDisplayingInstructions } = this.props;
 
     const handleAnswer = (diagramId: string) => {
-      this.foo(diagramId);
+      this.respondAndProceed(diagramId);
     };
 
     return (
