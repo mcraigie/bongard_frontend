@@ -14,7 +14,7 @@ function mapStateToProps(state: any) {
 
 // tslint:disable-next-line: no-any
 function mapDispatchToProps(dispatch: any, ownProps: any) {
-  return { ...bindActionCreators({ ...actionCreators, push }, dispatch) };
+  return { actions: bindActionCreators({ ...actionCreators, push }, dispatch) };
 }
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);

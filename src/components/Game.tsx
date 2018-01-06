@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { HeaderBand } from "./HeaderBand";
-import { FooterBand } from "./FooterBand";
+import { GameHeader } from "./GameHeader";
+import { GameFooter } from "./GameFooter";
 
 import { StatusBand } from "./StatusBand";
 import { Problem } from "./Problem";
@@ -10,37 +10,43 @@ import { BlankProblem } from "./BlankProblem";
 export interface GameProps {
   user: User;
   problem: Problem | null;
+  problemFetching: boolean;
+  problemFetchingFailure: string | null;
   displayInstructions: boolean;
   handleAnswer?: (id: string) => void;
-  toggleDisplayingInstructions: () => void;
+  toggleInstructions: () => void;
 }
 
 export class Game extends React.Component<GameProps> {
   render() {
     const {
       problem,
+      problemFetching,
+      problemFetchingFailure,
       handleAnswer,
       user,
-      toggleDisplayingInstructions,
+      toggleInstructions,
       displayInstructions,
     } = this.props;
 
-    let body = (
-      <p className="incorrect">Something went wrong while trying to contact the server :(</p>
-    );
+    let body = undefined;
 
-    if (!problem) {
+    if (problemFetching) {
       body = <BlankProblem />;
+    } else if (problemFetchingFailure) {
+      body = (
+        <p className="incorrect">Something went wrong while trying to contact the server :(</p>
+      );
     } else if (problem) {
       body = <Problem problem={problem} handleAnswer={handleAnswer} />;
     }
 
     return (
       <div className="game-band">
-        <HeaderBand
+        <GameHeader
           bestStreak={user.bestStreak}
           currentStreak={user.currentStreak}
-          toggleDisplayingInstructions={toggleDisplayingInstructions}
+          toggleInstructions={toggleInstructions}
           displayInstructions={displayInstructions}
         />
 
@@ -51,7 +57,7 @@ export class Game extends React.Component<GameProps> {
 
         {body}
 
-        <FooterBand />
+        <GameFooter />
       </div>
     );
   }

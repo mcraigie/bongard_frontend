@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Button } from "./Button";
 
-export const FooterBand = () => {
+export const GameFooter = () => {
   return (
     <div className="footer-band">
       <p>

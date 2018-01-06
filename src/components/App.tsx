@@ -15,16 +15,18 @@ export interface AppProps extends RouteComponentProps<{ problemId: string }> {
   problemValid: boolean;
   displayInstructions: boolean;
   responding: boolean;
-  fetchProblemRequest: () => void;
-  fetchProblemFailure: (errorMessage: string) => void;
-  fetchProblemSuccess: (response: Problem) => void;
-  fetchUserRequest: () => void;
-  fetchUserFailure: (errorMessage: string) => void;
-  fetchUserSuccess: (response: User) => void;
-  beginResponse: () => void;
-  endResponse: () => void;
-  push: (url: string) => void;
-  toggleDisplayingInstructions: () => void;
+  actions: {
+    fetchProblemRequest: () => void;
+    fetchProblemFailure: (errorMessage: string) => void;
+    fetchProblemSuccess: (response: Problem) => void;
+    fetchUserRequest: () => void;
+    fetchUserFailure: (errorMessage: string) => void;
+    fetchUserSuccess: (response: User) => void;
+    beginResponse: () => void;
+    endResponse: () => void;
+    push: (url: string) => void;
+    toggleInstructions: () => void;
+  };
 }
 
 export class App extends React.Component<AppProps> {
@@ -45,7 +47,8 @@ export class App extends React.Component<AppProps> {
   }
 
   fetchProblem = () => {
-    const { fetchProblemRequest, fetchProblemFailure, fetchProblemSuccess, match } = this.props;
+    const { match, actions } = this.props;
+    const { fetchProblemRequest, fetchProblemFailure, fetchProblemSuccess } = actions;
 
     fetchProblemRequest();
 
@@ -55,19 +58,18 @@ export class App extends React.Component<AppProps> {
   };
 
   respondAndProceed = async (diagramId: string) => {
+    const { user, problem, responding, actions } = this.props;
+
     const {
-      user,
       fetchUserRequest,
       fetchUserFailure,
       fetchUserSuccess,
-      problem,
-      responding,
       beginResponse,
       endResponse,
       push,
-    } = this.props;
+    } = actions;
 
-    if (problem == null || responding) {
+    if (responding || !problem) {
       return;
     }
 
@@ -99,19 +101,25 @@ export class App extends React.Component<AppProps> {
   };
 
   render() {
-    const { user, problem, displayInstructions, toggleDisplayingInstructions } = this.props;
-
-    const handleAnswer = (diagramId: string) => {
-      this.respondAndProceed(diagramId);
-    };
+    const {
+      user,
+      problem,
+      displayInstructions,
+      problemFetching,
+      problemFetchingFailure,
+      actions,
+    } = this.props;
+    const { toggleInstructions } = actions;
 
     return (
       <div className="App">
         <Game
           problem={problem}
-          handleAnswer={handleAnswer}
+          problemFetching={problemFetching}
+          problemFetchingFailure={problemFetchingFailure}
+          handleAnswer={(diagramId: string) => this.respondAndProceed(diagramId)}
           user={user}
-          toggleDisplayingInstructions={toggleDisplayingInstructions}
+          toggleInstructions={toggleInstructions}
           displayInstructions={displayInstructions}
         />
       </div>
