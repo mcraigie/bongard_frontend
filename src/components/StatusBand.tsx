@@ -13,7 +13,7 @@ export const StatusBand = (props: StatusBandProps) => {
 
   return (
     <div className="status-band">
-      {displayInstructions || previousAnswerCorrect == null ? (
+      {displayInstructions ? (
         <Instructions />
       ) : (
         <PreviousResult previousAnswerCorrect={previousAnswerCorrect} />

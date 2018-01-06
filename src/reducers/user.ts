@@ -1,10 +1,8 @@
 import { uuidv4 } from "../utils";
 
-function user(state: User = { id: uuidv4(), bestStreak: 0, currentStreak: 0 }, action: Actions) {
+export default function user(state: User = { id: uuidv4(), bestStreak: 0, currentStreak: 0 }, action: Actions) {
   switch (action.type) {
     default:
       return state;
   }
 }
-
-export default user;

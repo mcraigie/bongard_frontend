@@ -8,7 +8,7 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from "react-router-r
 import createHistory from "history/createBrowserHistory";
 
 import ConnectedApp from "./components/ConnectedApp";
-import * as reducers from "./reducers/index";
+import * as reducers from "./reducers/_index";
 
 import "./index.css";
 

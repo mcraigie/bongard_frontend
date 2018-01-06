@@ -1,5 +1,4 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router";
 
 import { HeaderBand } from "./HeaderBand";
 import { FooterBand } from "./FooterBand";
@@ -8,43 +7,18 @@ import { StatusBand } from "./StatusBand";
 import { Problem } from "./Problem";
 import { BlankProblem } from "./BlankProblem";
 
-export interface GameProps extends RouteComponentProps<{ problemId: string }> {
-  loading: boolean;
-  currentProblem: Problem;
-  handleAnswer: (id: string) => void;
+export interface GameProps {
   user: User;
-  toggleDisplayingInstructions: () => void;
+  problem: Problem | null;
   displayInstructions: boolean;
-  setCurrentProblem: (problem: Problem) => void;
-  setError: (error: Error) => void;
+  handleAnswer: (id: string) => void;
+  toggleDisplayingInstructions: () => void;
 }
 
 export class Game extends React.Component<GameProps> {
-  componentDidMount() {
-    const { match } = this.props;
-    this.requestProblem(match.params.problemId);
-  }
-
-  componentDidUpdate() {
-    const { loading, match } = this.props;
-
-    if (loading) {
-      this.requestProblem(match.params.problemId);
-    }
-  }
-
-  requestProblem = (problemId: string) => {
-    const { setCurrentProblem, setError } = this.props;
-
-    fetch(`/${problemId}.json`)
-      .then(res => res.json())
-      .then(currentProblem => setCurrentProblem(currentProblem), error => setError(error));
-  };
-
   render() {
     const {
-      loading,
-      currentProblem,
+      problem,
       handleAnswer,
       user,
       toggleDisplayingInstructions,
@@ -55,10 +29,10 @@ export class Game extends React.Component<GameProps> {
       <p className="incorrect">Something went wrong while trying to contact the server :(</p>
     );
 
-    if (loading) {
+    if (!problem) {
       body = <BlankProblem />;
-    } else if (currentProblem) {
-      body = <Problem problem={currentProblem} handleAnswer={handleAnswer} />;
+    } else if (problem) {
+      body = <Problem problem={problem} handleAnswer={handleAnswer} />;
     }
 
     return (
