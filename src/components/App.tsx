@@ -47,8 +47,10 @@ export class App extends React.Component<AppProps> {
   }
 
   fetchProblem = () => {
-    const { match, actions } = this.props;
-    const { fetchProblemRequest, fetchProblemFailure, fetchProblemSuccess } = actions;
+    const {
+      match,
+      actions: { fetchProblemRequest, fetchProblemFailure, fetchProblemSuccess },
+    } = this.props;
 
     fetchProblemRequest();
 
@@ -58,16 +60,19 @@ export class App extends React.Component<AppProps> {
   };
 
   respondAndProceed = async (diagramId: string) => {
-    const { user, problem, responding, actions } = this.props;
-
     const {
-      fetchUserRequest,
-      fetchUserFailure,
-      fetchUserSuccess,
-      beginResponse,
-      endResponse,
-      push,
-    } = actions;
+      user,
+      problem,
+      responding,
+      actions: {
+        fetchUserRequest,
+        fetchUserFailure,
+        fetchUserSuccess,
+        beginResponse,
+        endResponse,
+        push,
+      },
+    } = this.props;
 
     if (responding || !problem) {
       return;
@@ -107,9 +112,8 @@ export class App extends React.Component<AppProps> {
       displayInstructions,
       problemFetching,
       problemFetchingFailure,
-      actions,
+      actions: { toggleInstructions },
     } = this.props;
-    const { toggleInstructions } = actions;
 
     return (
       <div className="App">
