@@ -31,15 +31,21 @@ export class Game extends React.Component<GameProps> {
 
     let body = undefined;
 
-    if (problemFetching) {
-      body = <BlankProblem />;
-    } else if (problemFetchingFailure) {
-      body = (
-        <p className="incorrect">Something went wrong while trying to contact the server :(</p>
-      );
-    } else if (problem) {
-      body = <Problem problem={problem} handleAnswer={handleAnswer} />;
-    }
+    body = () => {
+      if (problemFetching) {
+        // fetching problem
+        return <BlankProblem />;
+      } else if (problemFetchingFailure) {
+        // failed to fetch
+        return <p className="incorrect">Something went wrong while trying to fetch the problem.</p>;
+      } else if (problem) {
+        // problem available
+        return <Problem problem={problem} handleAnswer={handleAnswer} />;
+      } else {
+        // unknown error
+        return <p className="incorrect">An unknown error has occured.</p>;
+      }
+    };
 
     return (
       <div className="game-band">
@@ -55,7 +61,7 @@ export class Game extends React.Component<GameProps> {
           displayInstructions={displayInstructions}
         />
 
-        {body}
+        {body()}
 
         <GameFooter />
       </div>
