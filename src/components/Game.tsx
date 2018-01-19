@@ -17,54 +17,50 @@ export interface GameProps {
   toggleInstructions: () => void;
 }
 
-export class Game extends React.Component<GameProps> {
-  render() {
-    const {
-      problem,
-      problemFetching,
-      problemFetchingFailure,
-      handleAnswer,
-      user,
-      toggleInstructions,
-      displayInstructions,
-    } = this.props;
+export const Game = (props: GameProps) => {
+  const {
+    problem,
+    problemFetching,
+    problemFetchingFailure,
+    handleAnswer,
+    user,
+    toggleInstructions,
+    displayInstructions,
+  } = props;
 
-    let body = undefined;
+  const body = () => {
+    if (problemFetching) {
+      // fetching problem
+      return <BlankProblem />;
+    } else if (problemFetchingFailure) {
+      // failed to fetch
+      return <p className="incorrect">Something went wrong while trying to fetch the problem.</p>;
+    } else if (problem) {
+      // problem available
+      return <Problem problem={problem} handleAnswer={handleAnswer} />;
+    } else {
+      // unknown error
+      return <p className="incorrect">An unknown error has occured.</p>;
+    }
+  };
 
-    body = () => {
-      if (problemFetching) {
-        // fetching problem
-        return <BlankProblem />;
-      } else if (problemFetchingFailure) {
-        // failed to fetch
-        return <p className="incorrect">Something went wrong while trying to fetch the problem.</p>;
-      } else if (problem) {
-        // problem available
-        return <Problem problem={problem} handleAnswer={handleAnswer} />;
-      } else {
-        // unknown error
-        return <p className="incorrect">An unknown error has occured.</p>;
-      }
-    };
+  return (
+    <div className="game-band">
+      <GameHeader
+        bestStreak={user.bestStreak}
+        currentStreak={user.currentStreak}
+        toggleInstructions={toggleInstructions}
+        displayInstructions={displayInstructions}
+      />
 
-    return (
-      <div className="game-band">
-        <GameHeader
-          bestStreak={user.bestStreak}
-          currentStreak={user.currentStreak}
-          toggleInstructions={toggleInstructions}
-          displayInstructions={displayInstructions}
-        />
+      <StatusBand
+        previousAnswerCorrect={user.previousResponseCorrect}
+        displayInstructions={displayInstructions}
+      />
 
-        <StatusBand
-          previousAnswerCorrect={user.previousResponseCorrect}
-          displayInstructions={displayInstructions}
-        />
+      {body()}
 
-        {body()}
-
-        <GameFooter />
-      </div>
-    );
-  }
-}
+      <GameFooter />
+    </div>
+  );
+};
